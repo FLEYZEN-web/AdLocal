@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMART MERCH</title>
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/buttons.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/hero.css">
+<link rel="stylesheet" href="css/catalog.css">
+<link rel="stylesheet" href="css/quiz.css">
+<link rel="stylesheet" href="css/footer.css">
+<link rel="stylesheet" href="css/floating-tg.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#hero" class="header__logo">SMART MERCH</a>
+
+    <nav class="header__nav" id="header-nav" aria-label="Основна навігація">
+      <ul class="header__list">
+        <li><a class="header__link" href="#products">Продукти</a></li>
+        <li><a class="header__link" href="#how">Як це працює</a></li>
+        <li><a class="header__link" href="#benefits">Переваги</a></li>
+        <li><a class="header__link" href="#contacts">Контакти</a></li>
+        <li class="header__item--cta">
+          <a class="btn btn--primary" href="#contacts">Замовити концепт</a>
+        </li>
+      </ul>
+    </nav>
+
+    <a class="btn btn--primary header__cta" href="#contacts">
+      Замовити концепт
+      <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+    </a>
+
+    <button class="header__burger" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="header-nav">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow">ФІЗИЧНИЙ МЕРЧ × ЦИФРОВІ МОЖЛИВОСТІ</p>
+
+        <h1 class="hero__title">Мерч, який приводить клієнтів, а не лежить у смітнику</h1>
+
+        <p class="hero__text">
+          Створюємо розумні фізичні речі з NFC та QR-технологіями, які перетворюють звичайний подарунок на новий канал залучення клієнтів.
+        </p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contacts">
+            Замовити концепт
+            <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+          <a class="btn btn--secondary" href="#how">Як це працює</a>
+        </div>
+
+        <ul class="hero__tags" aria-label="Можливості">
+          <li class="chip">NFC + QR</li>
+          <li class="chip">Ваш бренд</li>
+          <li class="chip">Telegram-бот</li>
+        </ul>
+      </div>
+
+      <div class="hero__media">
+        <img class="hero__image" src="img/hero-nfc.png" alt="Рука підносить NFC-брелок до смартфона" width="592" height="620">
+
+        <div class="hero__hint">
+          <svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c6ff36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8.32a7.43 7.43 0 0 1 0 7.36"/><path d="M9.46 6.21a11.76 11.76 0 0 1 0 11.58"/><path d="M12.91 4.1a15.91 15.91 0 0 1 .01 15.8"/><path d="M16.37 2a20.16 20.16 0 0 1 0 20"/></svg>
+          <div class="hero__hint-text">
+            <p class="hero__hint-title">Один дотик. Новий контакт.</p>
+            <p class="hero__hint-sub">Від речі — до вашого бренду</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__principle">
+      <p class="hero__principle-left">КОРИСНА РІЧ. ЖИВИЙ КОНТАКТ. ВАШ БРЕНД.</p>
+      <a class="hero__principle-link" href="#products">Відкрийте можливості мерчу ↓</a>
+    </div>
+  </div>
+</section>
+
+<section class="catalog" id="products">
+  <div class="container">
+    <p class="eyebrow">КАТАЛОГ МОЖЛИВОСТЕЙ</p>
+
+    <div class="catalog__intro">
+      <h2 class="catalog__title">Речі, які працюють на ваш бренд.</h2>
+      <p class="catalog__subtitle">Перетворюємо звичайні предмети на інструменти залучення клієнтів.</p>
+    </div>
+
+    <div class="catalog__grid">
+      <article class="card" data-product-id="comb">
+        <div class="card__media">
+          <img class="card__image" src="img/product-comb.png" alt="Металевий гребінець" loading="lazy">
+        </div>
+        <div class="card__body">
+          <p class="card__kicker">ДЛЯ БАРБЕРШОПІВ І САЛОНІВ</p>
+          <h3 class="card__title">Металевий гребінець</h3>
+          <p class="card__desc">Компактний аксесуар на щодень. Ваше гравіювання та QR-код ведуть до запису або спеціальної пропозиції.</p>
+          <div class="card__actions">
+            <button class="card__more" type="button" data-modal-open="comb">
+              Детальніше
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+            <a class="btn btn--primary" href="#contacts" data-product="comb">Замовити</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-product-id="opener">
+        <div class="card__media">
+          <img class="card__image" src="img/product-opener.png" alt="Брелок-відкривачка" loading="lazy">
+        </div>
+        <div class="card__body">
+          <p class="card__kicker">ДЛЯ КАФЕ, БАРІВ І МАГАЗИНІВ</p>
+          <h3 class="card__title">Брелок-відкривачка</h3>
+          <p class="card__desc">Корисна річ завжди під рукою. NFC-мітка або QR-код відкривають пропозицію бренду одним рухом.</p>
+          <div class="card__actions">
+            <button class="card__more" type="button" data-modal-open="opener">
+              Детальніше
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+            <a class="btn btn--primary" href="#contacts" data-product="opener">Замовити</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-product-id="freshener">
+        <div class="card__media">
+          <img class="card__image" src="img/product-freshener.png" alt="Автомобільний ароматизатор" loading="lazy">
+        </div>
+        <div class="card__body">
+          <p class="card__kicker">ДЛЯ АВТОБІЗНЕСУ ТА СЕРВІСІВ</p>
+          <h3 class="card__title">Автомобільний ароматизатор</h3>
+          <p class="card__desc">Ваш бренд у кожній поїздці. Ароматизатор із QR-кодом нагадує про сервіс і спрощує повторний запис.</p>
+          <div class="card__actions">
+            <button class="card__more" type="button" data-modal-open="freshener">
+              Детальніше
+              <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+            <a class="btn btn--primary" href="#contacts" data-product="freshener">Замовити</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="catalog__custom">
+      <ul class="catalog__chips">
+        <li class="chip">Ваш логотип</li>
+        <li class="chip">Ваше посилання</li>
+        <li class="chip">Ваш сценарій</li>
+      </ul>
+      <p class="catalog__note">Матеріали та комплектацію узгоджуємо під ваш запит.</p>
+    </div>
+  </div>
+</section>
+
+<section class="quiz" id="quiz">
+  <div class="container">
+    <div class="quiz__card">
+      <div class="quiz__intro">
+        <p class="eyebrow">ВАШ БІЗНЕС — ВАШ ФОРМАТ</p>
+        <h2 class="quiz__title">Підберемо мерч під ваш бізнес.</h2>
+        <p class="quiz__text">Три короткі запитання допоможуть визначити, з чого почати.</p>
+        <button class="btn btn--primary quiz__start" type="button" data-quiz-start>
+          Підібрати мерч
+          <svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+        </button>
+      </div>
+
+      <div class="quiz__panel">
+        <ol class="quiz__preview" data-quiz-preview>
+          <li>
+            <button class="quiz__preview-item" type="button" data-quiz-start="0">
+              <span class="quiz__num">01</span>
+              <span class="quiz__preview-body">
+                <span class="quiz__preview-title">Який у вас бізнес?</span>
+                <span class="quiz__preview-hint">Ніша та ваша аудиторія</span>
+              </span>
+              <svg class="icon quiz__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </button>
+          </li>
+          <li>
+            <button class="quiz__preview-item" type="button" data-quiz-start="1">
+              <span class="quiz__num">02</span>
+              <span class="quiz__preview-body">
+                <span class="quiz__preview-title">Яка ваша ціль?</span>
+                <span class="quiz__preview-hint">Нові клієнти, повторні покупки чи впізнаваність</span>
+              </span>
+              <svg class="icon quiz__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </button>
+          </li>
+          <li>
+            <button class="quiz__preview-item" type="button" data-quiz-start="2">
+              <span class="quiz__num">03</span>
+              <span class="quiz__preview-body">
+                <span class="quiz__preview-title">Який бюджет розглядаєте?</span>
+                <span class="quiz__preview-hint">Знайдемо доречний формат і комплектацію</span>
+              </span>
+              <svg class="icon quiz__arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </button>
+          </li>
+        </ol>
+
+        <div class="quiz__flow" data-quiz-flow hidden>
+          <div class="quiz__progress" aria-hidden="true"><div class="quiz__progress-bar" data-quiz-bar></div></div>
+          <p class="quiz__step" data-quiz-step></p>
+          <h3 class="quiz__question" data-quiz-question tabindex="-1"></h3>
+          <p class="quiz__hint" data-quiz-hint></p>
+          <div class="quiz__options" data-quiz-options></div>
+          <button class="quiz__back" type="button" data-quiz-back>← Назад</button>
+        </div>
+
+        <div class="quiz__result" data-quiz-result hidden>
+          <p class="quiz__result-label">РЕКОМЕНДАЦІЯ</p>
+          <h3 class="quiz__result-title" data-quiz-result-title tabindex="-1"></h3>
+          <p class="quiz__result-text" data-quiz-result-text></p>
+          <div class="quiz__result-actions">
+            <a class="btn btn--primary" href="#contacts" data-quiz-cta>Замовити концепт</a>
+            <button class="btn btn--secondary" type="button" data-quiz-restart>Пройти ще раз</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="footer__logo" href="#hero">SMART MERCH</a>
+        <p class="footer__desc">Корисні фізичні речі. Цифрові можливості вашого бренду.</p>
+      </div>
+
+      <nav class="footer__group" aria-label="Навігація">
+        <p class="footer__label">НАВІГАЦІЯ</p>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#products">Продукти</a></li>
+          <li><a class="footer__link" href="#how">Як це працює</a></li>
+          <li><a class="footer__link" href="#benefits">Переваги</a></li>
+          <li><a class="footer__link" href="#contacts">Контакти</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__group">
+        <p class="footer__label">ПРОДУКТИ</p>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="#products">Металевий гребінець</a></li>
+          <li><a class="footer__link" href="#products">Брелок-відкривачка</a></li>
+          <li><a class="footer__link" href="#products">Автомобільний ароматизатор</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__group footer__contact">
+        <p class="footer__label">БУДЬМО НА ЗВ’ЯЗКУ</p>
+        <a class="footer__telegram" href="https://t.me/your_brand" target="_blank" rel="noopener">Telegram ↗</a>
+        <p class="footer__handle">t.me/your_brand</p>
+        <p class="footer__placeholder">Посилання-заповнювач</p>
+      </div>
+    </div>
+
+    <div class="footer__legal">
+      <p>© 2026 SMART MERCH. Усі права захищені.</p>
+      <a class="footer__policy" href="#">Політика конфіденційності (заповнювач)</a>
+    </div>
+  </div>
+</footer>
+
+<a class="floating-tg" href="https://t.me/your_brand" target="_blank" rel="noopener" aria-label="Зв’язатися в Telegram">
+  <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c6ff36" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg>
+  <span class="floating-tg__label">Зв’язатися в Telegram</span>
+</a>
+
+<script src="js/header.js"></script>
+<script src="js/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 96px;
+}
+
+.header__logo {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+.header__list {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.header__link {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  transition: color 0.2s;
+}
+
+.header__link:hover {
+  color: var(--color-text-primary);
+}
+
+.header__item--cta,
+.header__burger {
+  display: none;
+}
+
+.header__burger {
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+@media (max-width: 1023px) {
+  .header__inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 80px 52px;
+    grid-template-areas:
+      'logo cta'
+      'nav  nav';
+    height: auto;
+  }
+
+  .header__logo { grid-area: logo; }
+  .header__cta  { grid-area: cta; }
+
+  .header__nav {
+    grid-area: nav;
+  }
+
+  .header__list {
+    justify-content: space-between;
+    height: 52px;
+  }
+}
+
+@media (max-width: 599px) {
+  .header__inner {
+    grid-template-rows: 72px;
+    grid-template-areas: 'logo burger';
+  }
+
+  .header__logo {
+    font-size: 20px;
+  }
+
+  .header__cta {
+    display: none;
+  }
+
+  .header__burger {
+    grid-area: burger;
+    display: inline-flex;
+    margin-right: -12px;
+  }
+
+  .header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 8px var(--gutter) 24px;
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header.is-open .header__nav {
+    display: block;
+  }
+
+  .header__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    height: auto;
+  }
+
+  .header__link {
+    display: block;
+    padding: 14px 0;
+    font-size: 16px;
+  }
+
+  .header__item--cta {
+    display: block;
+    padding-top: 16px;
+  }
+
+  .header__item--cta .btn {
+    width: 100%;
+  }
+}

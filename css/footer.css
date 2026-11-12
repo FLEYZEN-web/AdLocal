@@ -1,0 +1,142 @@
+.footer {
+  background: var(--color-background-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__inner {
+  padding-top: 64px;
+  padding-bottom: 32px;
+}
+
+.footer__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 360px;
+}
+
+.footer__logo {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1.3px;
+}
+
+.footer__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.footer__group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer__link {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  transition: color 0.2s;
+}
+
+.footer__link:hover,
+.footer__policy:hover {
+  color: var(--color-text-primary);
+}
+
+.footer__telegram {
+  font-size: 16px;
+  color: var(--color-accent);
+}
+
+.footer__telegram:hover {
+  color: var(--color-accent-hover);
+}
+
+.footer__handle {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.footer__placeholder {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.footer__legal {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.footer__policy {
+  transition: color 0.2s;
+}
+
+@media (max-width: 1023px) {
+  .footer__inner {
+    padding-top: 48px;
+  }
+
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 32px;
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+    width: auto;
+    gap: 20px;
+  }
+
+  .footer__contact {
+    grid-column: 1 / -1;
+  }
+
+  .footer__list {
+    gap: 12px;
+  }
+
+  .footer__link {
+    display: block;
+    padding: 6px 0;
+  }
+
+  .footer__legal {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 599px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__legal {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
