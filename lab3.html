@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMART MERCH — Базові стилі інпутів, кнопок та UI-станів</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- main.css сам підключає tokens.css та components/forms.css -->
+  <link rel="stylesheet" href="src/styles/main.css">
+  <style>
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .header-badge {
+      display: inline-block;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .page-title {
+      font-size: var(--font-size-5xl);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin: 0 0 12px;
+      color: var(--color-text-primary);
+    }
+    .page-desc {
+      font-size: var(--font-size-md);
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+      margin-bottom: 40px;
+    }
+    .section-card {
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      margin-bottom: 36px;
+    }
+    .section-title {
+      font-size: var(--font-size-3xl);
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      margin: 0 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-num {
+      color: var(--color-accent);
+      font-size: var(--font-size-md);
+      font-weight: 600;
+    }
+    .section-desc {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      margin-bottom: 24px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .state-col {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .state-name {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .token-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--color-text-muted);
+      font-family: monospace;
+      margin-top: 4px;
+    }
+    .swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid var(--color-border);
+      display: inline-block;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="header-badge">SMART MERCH / Design System</span>
+    <h1 class="page-title">UI Компоненти та форми</h1>
+    <p class="page-desc">
+      Базові стилі для <code>input</code>, <code>textarea</code>, <code>select</code> та кнопок із підтримкою всіх UI-станів: 
+      <strong>:hover</strong>, <strong>:focus</strong> (салатова рамка <code>#C6FF36</code>), <strong>.error</strong> (червона рамка <code>#FF5B5B</code>), <strong>:disabled</strong> та <strong>.is-loading</strong>.
+    </p>
+
+    <!-- 01. ПОЛЯ ВВОДУ (INPUT) -->
+    <div class="section-card">
+      <h2 class="section-title"><span class="section-num">01</span> Поля вводу (Input)</h2>
+      <p class="section-desc">Демонстрація всіх станів для текстових полів введення даних.</p>
+
+      <div class="grid-2">
+        <!-- Default -->
+        <div class="state-col">
+          <span class="state-name">Default (За замовчуванням)</span>
+          <div class="form-group">
+            <label class="form-label" for="inp-default">Ім'я або назва компанії</label>
+            <input type="text" id="inp-default" placeholder="Введіть текст...">
+            <span class="form-hint">Підказка для користувача</span>
+          </div>
+          <span class="token-badge"><span class="swatch" style="background:#151915;"></span> фон: #151915 | рамка: #292E29</span>
+        </div>
+
+        <!-- Focus -->
+        <div class="state-col">
+          <span class="state-name">Focus (Салатова рамка #C6FF36)</span>
+          <div class="form-group">
+            <label class="form-label" for="inp-focus">Електронна пошта <span class="form-label-required">*</span></label>
+            <input type="email" id="inp-focus" class="focus" value="client@smartmerch.ua">
+            <span class="form-hint">Активне поле з акцентною рамкою</span>
+          </div>
+          <span class="token-badge"><span class="swatch" style="background:#C6FF36;"></span> рамка: #C6FF36 (accent)</span>
+        </div>
+
+        <!-- Error -->
+        <div class="state-col">
+          <span class="state-name">Error (Червона рамка #FF5B5B)</span>
+          <div class="form-group">
+            <label class="form-label" for="inp-error">Номер телефону</label>
+            <input type="tel" id="inp-error" class="error" value="+380 99">
+            <span class="form-error">⚠ Некоректний формат номеру</span>
+          </div>
+          <span class="token-badge"><span class="swatch" style="background:#FF5B5B;"></span> рамка: #FF5B5B (error)</span>
+        </div>
+
+        <!-- Disabled -->
+        <div class="state-col">
+          <span class="state-name">Disabled (Заблокований)</span>
+          <div class="form-group">
+            <label class="form-label" for="inp-disabled">Ідентифікатор замовлення</label>
+            <input type="text" id="inp-disabled" disabled value="SM-89421 (недоступно)">
+            <span class="form-hint">Поле недоступне для редагування</span>
+          </div>
+          <span class="token-badge"><span class="swatch" style="background:#101310;"></span> фон: #101310 | текст: #707770</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02. СЕЛЕКТ ТА ТЕКСТОВИЙ БЛОК -->
+    <div class="section-card">
+      <h2 class="section-title"><span class="section-num">02</span> Селекти та Текстові блоки (Textarea)</h2>
+      <p class="section-desc">Випадаючі списки з кастомною SVG стрілкою та багаторядкові поля вводу.</p>
+
+      <div class="grid-2">
+        <div class="state-col">
+          <span class="state-name">Select — Default / Focus</span>
+          <div class="form-group">
+            <label class="form-label" for="sel-default">Оберіть категорію мерчу</label>
+            <select id="sel-default">
+              <option value="">Оберіть зі списку...</option>
+              <option value="keychain">NFC Брелок з відкривачкою</option>
+              <option value="comb">Сталевий гребінець із лазерним QR</option>
+              <option value="freshener">Автомобільний ароматизатор</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="sel-error">Select — Стан Error</label>
+            <select id="sel-error" class="error">
+              <option value="">Потрібно зробити вибір...</option>
+              <option value="1">Варіант 1</option>
+            </select>
+            <span class="form-error">⚠ Обов'язкове поле для вибору</span>
+          </div>
+        </div>
+
+        <div class="state-col">
+          <span class="state-name">Textarea (Повідомлення / ТЗ)</span>
+          <div class="form-group">
+            <label class="form-label" for="txt-area">Опис замовлення</label>
+            <textarea id="txt-area" placeholder="Опишіть деталі концепту, тираж або побажання щодо матеріалів..."></textarea>
+            <span class="form-hint">Підтримує зміну розміру по вертикалі</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03. КНОПКИ (BUTTONS) -->
+    <div class="section-card">
+      <h2 class="section-title"><span class="section-num">03</span> Кнопки (Buttons) та UI-стани</h2>
+      <p class="section-desc">Первинні (Primary #C6FF36) та вторинні (Secondary) кнопки з усіма станами.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 28px;">
+        <!-- Primary Buttons -->
+        <div>
+          <h3 style="font-size: var(--font-size-lg); margin: 0 0 16px; color: var(--color-accent);">Primary Button (Головна дія)</h3>
+          <div class="btn-row">
+            <button type="button" class="btn btn-primary">
+              Замовити концепт →
+            </button>
+            <button type="button" class="btn btn-primary hover">
+              Hover (#D8FF72)
+            </button>
+            <button type="button" class="btn btn-primary active">
+              Pressed (Active)
+            </button>
+            <button type="button" class="btn btn-primary focus">
+              Focus Outline
+            </button>
+            <button type="button" class="btn btn-primary is-loading">
+              Завантаження...
+            </button>
+            <button type="button" class="btn btn-primary" disabled>
+              Disabled
+            </button>
+          </div>
+        </div>
+
+        <!-- Secondary Buttons -->
+        <div>
+          <h3 style="font-size: var(--font-size-lg); margin: 0 0 16px; color: var(--color-text-secondary);">Secondary Button (Вторинна дія)</h3>
+          <div class="btn-row">
+            <button type="button" class="btn btn-secondary">
+              Детальніше
+            </button>
+            <button type="button" class="btn btn-secondary hover">
+              Hover State
+            </button>
+            <button type="button" class="btn btn-secondary active">
+              Pressed State
+            </button>
+            <button type="button" class="btn btn-secondary focus">
+              Focus Outline
+            </button>
+            <button type="button" class="btn btn-secondary is-loading">
+              Обробка...
+            </button>
+            <button type="button" class="btn btn-secondary" disabled>
+              Disabled
+            </button>
+          </div>
+        </div>
+
+        <!-- Danger & Ghost Buttons -->
+        <div>
+          <h3 style="font-size: var(--font-size-lg); margin: 0 0 16px; color: var(--color-error);">Danger & Ghost Variants</h3>
+          <div class="btn-row">
+            <button type="button" class="btn btn-danger">
+              Скасувати замовлення
+            </button>
+            <button type="button" class="btn btn-ghost">
+              Назад до каталогу
+            </button>
+            <button type="button" class="btn btn-sm btn-primary">
+              Small (40px)
+            </button>
+            <button type="button" class="btn btn-md btn-primary">
+              Medium (48px)
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04. ЧЕКБОКСИ ТА РАДІОКНОПКИ -->
+    <div class="section-card">
+      <h2 class="section-title"><span class="section-num">04</span> Перемикачі (Checkbox & Radio)</h2>
+      <p class="section-desc">Кастомні стилі для вибору опцій у фірмових кольорах.</p>
+      
+      <div class="grid-2">
+        <div class="state-col">
+          <span class="state-name">Чекбокси</span>
+          <label class="form-check">
+            <input type="checkbox" checked>
+            Потрібна лазерна гравіровка NFC-мітки
+          </label>
+          <label class="form-check">
+            <input type="checkbox">
+            Індивідуальна подарункова упаковка
+          </label>
+          <label class="form-check">
+            <input type="checkbox" disabled checked>
+            Базова гарантія (за замовчуванням)
+          </label>
+        </div>
+
+        <div class="state-col">
+          <span class="state-name">Радіокнопки</span>
+          <label class="form-check">
+            <input type="radio" name="delivery" checked>
+            Кур'єрська доставка Нова Пошта
+          </label>
+          <label class="form-check">
+            <input type="radio" name="delivery">
+            Самовивіз із дизайн-студії
+          </label>
+          <label class="form-check">
+            <input type="radio" name="delivery" disabled>
+            Міжнародна доставка (тимчасово недоступно)
+          </label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
