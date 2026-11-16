@@ -1,0 +1,104 @@
+/**
+ * SMART MERCH — Design System Tokens
+ * Tokens & Typography v1.0
+ */
+
+:root {
+  /* ==========================================================================
+     Кольори (Color Tokens)
+     ========================================================================== */
+  
+  /* Backgrounds & Surfaces */
+  --color-bg-primary: #080A08;          /* SMART MERCH / Background */
+  --color-bg-secondary: #101310;        /* SMART MERCH / Background secondary */
+  --color-card: #151915;                /* SMART MERCH / Card (фон інпутів та карток) */
+  --color-card-bg: #151915;             /* Аліас для фону карток */
+  --color-elevated: #1B201B;            /* SMART MERCH / Elevated */
+
+  /* Borders */
+  --color-border: #292E29;              /* SMART MERCH / Border */
+  --color-border-hover: #707770;        /* Підсвітка рамки при наведенні */
+
+  /* Typography Colors */
+  --color-text-primary: #FFFFFF;        /* SMART MERCH / Text primary */
+  --color-text-secondary: #A0A5A0;      /* SMART MERCH / Text secondary */
+  --color-text-muted: #707770;          /* SMART MERCH / Text muted */
+
+  /* Accent (Lime) */
+  --color-accent: #C6FF36;              /* SMART MERCH / Accent */
+  --color-accent-hover: #D8FF72;        /* SMART MERCH / Accent hover */
+  --color-accent-active: #B2EC28;       /* Акцент активного натискання */
+  --color-accent-glow: rgba(198, 255, 54, 0.16); /* Напівпрозорий салатовий фокус */
+
+  /* Semantic Colors */
+  --color-error: #FF5B5B;               /* SMART MERCH / Error */
+  --color-error-hover: #FF7575;
+  --color-error-glow: rgba(255, 91, 91, 0.16);   /* Напівпрозорий червоний фокус */
+  --color-success: #73D98C;             /* SMART MERCH / Success */
+  --color-success-glow: rgba(115, 217, 140, 0.16);
+
+  /* ==========================================================================
+     Шкала радіусів (Border Radius)
+     ========================================================================== */
+  --radius-xs: 4px;
+  --radius-sm: 8px;                     /* Стандарт для інпутів та кнопок */
+  --radius-md: 12px;                    /* Стандарт для карток та контейнерів */
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ==========================================================================
+     Шкала відступів (Spacing Scale)
+     ========================================================================== */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-120: 120px;
+
+  /* ==========================================================================
+     Типографіка (Typography)
+     ========================================================================== */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  --font-size-xs: 12px;
+  --font-size-sm: 13px;
+  --font-size-base: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+  --font-size-4xl: 32px;
+  --font-size-5xl: 40px;
+  --font-size-6xl: 56px;
+  --font-size-display: 72px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.5;
+
+  /* ==========================================================================
+     Тіні та ефекти (Shadows & Effects)
+     ========================================================================== */
+  --shadow-card: 0px 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-elevated: 0px 12px 32px rgba(0, 0, 0, 0.35);
+
+  /* Анімації (Transitions) */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
