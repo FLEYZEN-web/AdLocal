@@ -1,0 +1,32 @@
+/**
+ * SMART MERCH — Main Stylesheet
+ * File: src/styles/main.css
+ */
+
+@import "./tokens.css";
+@import "./components/forms.css";
+
+/* Base Reset & Document Defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-primary, #080A08);
+  color: var(--color-text-primary, #FFFFFF);
+  font-family: var(--font-family, 'Inter', -apple-system, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-accent, #C6FF36);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-hover, #D8FF72);
+}
