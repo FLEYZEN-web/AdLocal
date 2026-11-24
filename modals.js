@@ -23,7 +23,7 @@
       isAvailable: true,
       stockText: 'В наявності (24 шт.)',
       badgeClass: 'product-badge--in-stock',
-      imageSrc: 'https://images.unsplash.com/photo-1590159763121-7c9ff3149e0a?auto=format&fit=crop&w=1200&q=80',
+      imageSrc: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80',
       imageAlt: 'Сталевий кишеньковий гребінець із лазерним QR',
       description: 'Прецизійно оброблений кишеньковий гребінець із матової нержавіючої сталі 316L. Короткі закруглені зубці забезпечують м’яке розчісування без пошкодження волосся. На руків’ї вигравірувано стійкий лазерний QR-код для миттєвого шерингу цифрової візитки, портфоліо або контактів бренду.',
       specs: [
@@ -43,7 +43,7 @@
       isAvailable: true,
       stockText: 'В наявності (18 шт.)',
       badgeClass: 'product-badge--in-stock',
-      imageSrc: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1200&q=80',
+      imageSrc: 'https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=1200&q=80',
       imageAlt: 'NFC-брелок відкривачка з матової сталі',
       description: 'Флагманський продукт серії SMART MERCH. Компактна плоска відкривачка із масивної шліфованої сталі зі стійким кільцем для ключів. Оснащена високочутливим захищеним NFC-чіпом NTAG213 із фірмовою салатовою міткою. При піднесенні до будь-якого сучасного смартфона миттєво відкриває налаштоване посилання.',
       specs: [
@@ -63,7 +63,7 @@
       isAvailable: false, // обмежена серія
       stockText: 'Обмежена серія (тільки 5 шт.)',
       badgeClass: 'product-badge--limited',
-      imageSrc: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=1200&q=80',
+      imageSrc: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=80',
       imageAlt: 'Мінімалістичний автомобільний ароматизатор',
       description: 'Підвісний автомобільний дифузор глибокого графітового кольору з пресованої органічної повсті. Створений для шанувальників стриманого преміального стилю. На лицьовій стороні нанесено геометричний фірмовий знак бренду та QR-код для переходу до ексклюзивного музичного плейлиста бренду.',
       specs: [
