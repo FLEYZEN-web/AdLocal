@@ -406,7 +406,7 @@ input[type="reset"] {
 }
 
 /* Primary — Hover */
-button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):hover:not(:disabled),
+button:not([class]):hover:not(:disabled),
 .btn-primary:hover:not(:disabled):not(.disabled),
 .btn:hover:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):not(:disabled):not(.disabled),
 .btn-primary.hover {
@@ -416,7 +416,7 @@ button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):hover:not(:disabled)
 }
 
 /* Primary — Pressed / Active */
-button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):active:not(:disabled),
+button:not([class]):active:not(:disabled),
 .btn-primary:active:not(:disabled):not(.disabled),
 .btn:active:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):not(:disabled):not(.disabled),
 .btn-primary.pressed,
@@ -427,7 +427,7 @@ button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):active:not(:disabled
 }
 
 /* Primary — Focus (Салатова рамка фокусу з контуром) */
-button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):focus-visible,
+button:not([class]):focus-visible,
 .btn-primary:focus-visible,
 .btn:focus-visible:not(.btn-secondary):not(.btn-ghost):not(.btn-danger),
 .btn-primary.focus {
@@ -436,7 +436,7 @@ button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):focus-visible,
 }
 
 /* Primary — Disabled */
-button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):disabled,
+button:not([class]):disabled,
 button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger)[disabled],
 .btn-primary:disabled,
 .btn-primary[disabled],

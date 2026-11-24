@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMART MERCH — Каталог продукції та модальні вікна</title>
+  
+  <!-- Шрифт Inter з Google Fonts (як у Figma) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Дизайн-токени та стилі модальних вікон -->
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="modals.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+    
+    <!-- Шапка сайту (відповідно до Figma-специфікації SMART MERCH) -->
+    <header class="site-header">
+      <a href="index.html" class="brand-logo">
+        SMART MERCH<span>.</span>
+      </a>
+      <span class="header-tag">Каталог можливостей v1.0</span>
+    </header>
+
+    <!-- Заголовок розділу товарів -->
+    <section class="catalog-hero">
+      <div class="catalog-rubric">Лінійка преміального мерчу</div>
+      <h1 class="catalog-title">Розумний мерч нового покоління</h1>
+      <p class="catalog-subtitle">
+        Натисніть на будь-яку картку товару (гребінець, відкривачка або ароматизатор), 
+        щоб відкрити спливаюче модальне вікно з детальною інформацією, ціною та характеристиками.
+      </p>
+    </section>
+
+    <!-- Сітка з трьома товарами згідно з завданням -->
+    <main>
+      <div class="products-grid">
+
+        <!-- 1. СТАЛЕВИЙ ГРЕБІНЕЦЬ -->
+        <article class="product-card" data-product-id="comb" tabindex="0" role="button" aria-label="Детальніше про Сталевий гребінець">
+          <div class="product-card__image-wrapper">
+            <span class="product-badge product-badge--in-stock">В наявності</span>
+            <img 
+              class="product-card__image" 
+              src="https://images.unsplash.com/photo-1590159763121-7c9ff3149e0a?auto=format&fit=crop&w=800&q=80" 
+              alt="Сталевий кишеньковий гребінець із лазерним QR"
+              loading="lazy"
+            >
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__category">Преміальні аксесуари</span>
+            <h3 class="product-card__title">Сталевий гребінець із лазерним QR</h3>
+            <p class="product-card__excerpt">
+              Прецизійна обробка нержавіючої сталі 316L. Вбудований QR-код для миттєвої передачі контактів.
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">850 ₴</span>
+              <span class="product-card__btn" aria-hidden="true">
+                Детальніше <span>→</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. NFC-ВІДКРИВАЧКА -->
+        <article class="product-card" data-product-id="opener" tabindex="0" role="button" aria-label="Детальніше про NFC-брелок відкривачка">
+          <div class="product-card__image-wrapper">
+            <span class="product-badge product-badge--in-stock">В наявності</span>
+            <img 
+              class="product-card__image" 
+              src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80" 
+              alt="NFC-брелок відкривачка з матової сталі"
+              loading="lazy"
+            >
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__category">Smart Tech Мерч</span>
+            <h3 class="product-card__title">NFC-брелок відкривачка зі сталі</h3>
+            <p class="product-card__excerpt">
+              Міцна конструкція зі шліфованої сталі з вбудованим чіпом NFC NTAG213 для швидкого tap-підключення.
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">620 ₴</span>
+              <span class="product-card__btn" aria-hidden="true">
+                Детальніше <span>→</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. АВТОМОБІЛЬНИЙ АРОМАТИЗАТОР -->
+        <article class="product-card" data-product-id="freshener" tabindex="0" role="button" aria-label="Детальніше про Автомобільний ароматизатор">
+          <div class="product-card__image-wrapper">
+            <span class="product-badge product-badge--limited">Обмежена серія</span>
+            <img 
+              class="product-card__image" 
+              src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&w=800&q=80" 
+              alt="Мінімалістичний автомобільний ароматизатор"
+              loading="lazy"
+            >
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__category">Автомобільна колекція</span>
+            <h3 class="product-card__title">Мінімалістичний ароматизатор</h3>
+            <p class="product-card__excerpt">
+              Пресована графітова повсть з ароматом кедра та бергамоту. До 45 днів стійкого аромату з QR-плейлистом.
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">390 ₴</span>
+              <span class="product-card__btn" aria-hidden="true">
+                Детальніше <span>→</span>
+              </span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- ==========================================================================
+       МОДАЛЬНЕ ВІКНО ДЕТАЛЬНОЇ ІНФОРМАЦІЇ (Макет Figma: 664px з фото зверху)
+       ========================================================================== -->
+  <div id="productModal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+    
+    <div id="modalWindow" class="modal-window">
+      
+      <!-- Ручка для мобільної шторки (40×4px за Figma) -->
+      <div class="modal-drag-handle" aria-hidden="true"></div>
+
+      <!-- Кнопка закриття (хрестик) -->
+      <button type="button" id="modalCloseBtn" class="modal-close-btn" aria-label="Закрити модальне вікно">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Фото / Візуалізація товару зверху -->
+      <div id="modalMedia" class="modal-media">
+        <span id="modalMediaBadge" class="product-badge modal-media__badge">В наявності</span>
+        <div class="modal-media__artwork-box">
+          <!-- Сюди динамічно підставляється ілюстрація товару з JS -->
+        </div>
+      </div>
+
+      <!-- Деталі, ціна, наявність та кнопки -->
+      <div class="modal-details">
+        
+        <div>
+          <div id="modalRubric" class="modal-details__rubric">Категорія</div>
+          <h2 id="modalTitle" class="modal-details__title">Назва мерчу</h2>
+        </div>
+
+        <!-- Блок ціни та статусу наявності -->
+        <div class="modal-pricing-bar">
+          <div>
+            <span style="display:block;font-size:11px;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.5px;">Ціна за одиницю</span>
+            <span id="modalPrice" class="modal-price-value">0 ₴</span>
+          </div>
+          <div style="text-align:right;">
+            <span style="display:block;font-size:11px;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:0.5px;">Статус складу</span>
+            <span id="modalStock" class="modal-stock-status">В наявності</span>
+          </div>
+        </div>
+
+        <!-- Повний опис мерчу -->
+        <p id="modalDescription" class="modal-description">
+          Детальний опис товару...
+        </p>
+
+        <!-- Характеристики та матеріали -->
+        <div class="modal-specs">
+          <span class="modal-specs__title">Характеристики та матеріали:</span>
+          <div id="modalTags" class="modal-specs__tags">
+            <!-- Сюди генеруються чіпи -->
+          </div>
+        </div>
+
+        <!-- Блок «Наступний крок» після кліку на замовлення (Live Region для скрінрідерів) -->
+        <div id="modalOrderSuccess" class="modal-order-success" role="status" aria-live="polite" hidden style="display: none;">
+          <h4 class="modal-order-success__title">✓ Концепт додано до замовлення</h4>
+          <p class="modal-order-success__text">
+            <strong>Наступний крок:</strong> Наш арт-директор зв'яжеться з вами протягом 15 хвилин для узгодження макета та нанесення фірмової айдентики.
+          </p>
+        </div>
+
+        <!-- Кнопки дій -->
+        <div class="modal-actions">
+          <button type="button" id="modalOrderBtn" class="modal-btn-order">
+            Замовити концепт →
+          </button>
+          <button type="button" id="modalActionCloseBtn" class="modal-btn-close-action">
+            Закрити
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Підключення логіки модальних вікон -->
+  <script src="modals.js"></script>
+
+</body>
+</html>
