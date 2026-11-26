@@ -1,0 +1,711 @@
+/**
+ * SMART MERCH — Modals Stylesheet
+ * File: modals.css
+ * 
+ * Стилі модальних вікон для детальної інформації про мерч згідно з дизайн-системою SMART MERCH:
+ * - Картки товарів каталогу (Гребінець, Відкривачка, Ароматизатор)
+ * - Оверлей модального вікна з розмиттям (backdrop-filter)
+ * - Одноколонковий макет модалі (ширина 664px із фото зверху, як у Figma)
+ * - Кнопка закриття (хрестик) з фокусом та ховером
+ * - Мобільна «шторка» (bottom-sheet) з ручкою 40×4px, max-height: 92dvh та padding: 0
+ * - Блок «Наступний крок» після замовлення
+ * - Блокування прокрутки сторінки (body.modal-open)
+ */
+
+/* ==========================================================================
+   Базовий ресет та типографіка сторінки
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-primary, #080A08);
+  color: var(--color-text-primary, #FFFFFF);
+  font-family: var(--font-family, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* Блокування прокрутки фону при відкритій модалці */
+body.modal-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+/* ==========================================================================
+   Компоновка сторінки каталогу
+   ========================================================================== */
+
+.page-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* Навігація зверху */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border, #292E29);
+  margin-bottom: 48px;
+}
+
+.brand-logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--color-text-primary, #FFFFFF);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-logo span {
+  color: var(--color-accent, #C6FF36);
+}
+
+.header-tag {
+  font-size: var(--font-size-xs, 12px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-accent, #C6FF36);
+  text-transform: uppercase;
+  background: rgba(198, 255, 54, 0.08);
+  border: 1px solid rgba(198, 255, 54, 0.2);
+  padding: 6px 14px;
+  border-radius: var(--radius-full, 9999px);
+}
+
+/* Заголовок каталогу */
+.catalog-hero {
+  margin-bottom: 40px;
+}
+
+.catalog-rubric {
+  font-size: var(--font-size-xs, 12px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-accent, #C6FF36);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.catalog-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin: 0 0 16px;
+  line-height: 1.15;
+}
+
+.catalog-subtitle {
+  font-size: var(--font-size-md, 16px);
+  color: var(--color-text-secondary, #A0A5A0);
+  max-width: 640px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Сітка карток товарів
+   ========================================================================== */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  box-sizing: border-box;
+  background-color: var(--color-card, #151915);
+  border: 1px solid var(--color-border, #292E29);
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal, 200ms ease),
+              border-color var(--transition-normal, 200ms ease),
+              box-shadow var(--transition-normal, 200ms ease);
+  cursor: pointer;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent, #C6FF36);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--color-accent, #C6FF36);
+}
+
+.product-card:focus-visible {
+  outline: 2px solid var(--color-accent, #C6FF36);
+  outline-offset: 4px;
+}
+
+/* Обгортка зображення картки */
+.product-card__image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background-color: var(--color-elevated, #1B201B);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.05);
+}
+
+.product-card__svg-artwork {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 400ms ease;
+}
+
+.product-card:hover .product-card__svg-artwork {
+  transform: scale(1.04);
+}
+
+/* Бейдж наявності */
+.product-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--radius-xs, 4px);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+}
+
+.product-badge--in-stock {
+  background: rgba(115, 217, 140, 0.15);
+  color: var(--color-success, #73D98C);
+  border: 1px solid rgba(115, 217, 140, 0.3);
+}
+
+.product-badge--in-stock::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-success, #73D98C);
+}
+
+.product-badge--limited {
+  background: rgba(198, 255, 54, 0.15);
+  color: var(--color-accent, #C6FF36);
+  border: 1px solid rgba(198, 255, 54, 0.3);
+}
+
+.product-badge--limited::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent, #C6FF36);
+}
+
+/* Тіло картки */
+.product-card__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-card__category {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-accent, #C6FF36);
+  margin-bottom: 6px;
+}
+
+.product-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text-primary, #FFFFFF);
+  margin: 0 0 8px;
+}
+
+.product-card__excerpt {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #A0A5A0);
+  margin: 0 0 16px;
+  flex-grow: 1;
+}
+
+.product-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border, #292E29);
+  margin-top: auto;
+}
+
+.product-card__price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-primary, #FFFFFF);
+}
+
+.product-card__btn {
+  background-color: var(--color-elevated, #1B201B);
+  border: 1px solid var(--color-border, #292E29);
+  color: var(--color-accent, #C6FF36);
+  border-radius: var(--radius-sm, 8px);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast, 150ms ease);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.product-card:hover .product-card__btn {
+  background-color: var(--color-accent, #C6FF36);
+  border-color: var(--color-accent, #C6FF36);
+  color: var(--color-bg-primary, #080A08);
+}
+
+/* ==========================================================================
+   МОДАЛЬНЕ ВІКНО (Figma-макет: одна колонка 664px з фото зверху)
+   ========================================================================== */
+
+/* Оверлей / Фон модалі */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background-color: rgba(8, 10, 8, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Контейнер модального вікна — 664px за макетом Figma */
+.modal-window {
+  box-sizing: border-box;
+  background-color: var(--color-card, #151915);
+  border: 1px solid var(--color-border, #292E29);
+  border-radius: var(--radius-lg, 16px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  width: 100%;
+  max-width: 664px;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transform: scale(0.95) translateY(12px);
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.is-active .modal-window {
+  transform: scale(1) translateY(0);
+}
+
+/* Ручка для мобільної шторки (40×4px, як у Figma) */
+.modal-drag-handle {
+  display: none;
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--color-border-hover, #707770);
+  margin: 10px auto 4px;
+  flex: none;
+}
+
+/* Кнопка закриття (хрестик) */
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm, 8px);
+  background-color: rgba(21, 25, 21, 0.85);
+  border: 1px solid var(--color-border, #292E29);
+  color: var(--color-text-secondary, #A0A5A0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast, 150ms ease);
+}
+
+.modal-close-btn:hover {
+  background-color: var(--color-elevated, #1B201B);
+  border-color: var(--color-accent, #C6FF36);
+  color: var(--color-accent, #C6FF36);
+  transform: rotate(90deg);
+}
+
+.modal-close-btn:focus-visible {
+  outline: 2px solid var(--color-accent, #C6FF36);
+  outline-offset: 2px;
+}
+
+/* Фото товару зверху (одноколонковий дизайн за Figma) */
+.modal-media {
+  width: 100%;
+  height: 240px;
+  background-color: var(--color-elevated, #1B201B);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border, #292E29);
+  flex-shrink: 0;
+}
+
+.modal-media__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-media__artwork-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-media__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+}
+
+/* Блок детальної інформації */
+.modal-details {
+  padding: 28px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal-details__rubric {
+  font-size: var(--font-size-xs, 12px);
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-accent, #C6FF36);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.modal-details__title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-text-primary, #FFFFFF);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Блок ціни та статусу наявності */
+.modal-pricing-bar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background-color: var(--color-elevated, #1B201B);
+  border: 1px solid var(--color-border, #292E29);
+  border-radius: var(--radius-sm, 8px);
+}
+
+.modal-price-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-primary, #FFFFFF);
+  letter-spacing: -0.5px;
+}
+
+.modal-stock-status {
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.modal-stock-status--available {
+  color: var(--color-success, #73D98C);
+}
+
+.modal-stock-status--available::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-success, #73D98C);
+  box-shadow: 0 0 8px rgba(115, 217, 140, 0.6);
+}
+
+.modal-stock-status--limited {
+  color: var(--color-accent, #C6FF36);
+}
+
+.modal-stock-status--limited::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent, #C6FF36);
+  box-shadow: 0 0 8px rgba(198, 255, 54, 0.6);
+}
+
+/* Опис товару */
+.modal-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary, #A0A5A0);
+  margin: 0;
+}
+
+/* Характеристики та матеріали */
+.modal-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-specs__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-muted, #707770);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-specs__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-tag {
+  background-color: var(--color-bg-primary, #080A08);
+  border: 1px solid var(--color-border, #292E29);
+  color: var(--color-text-primary, #FFFFFF);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-xs, 4px);
+}
+
+/* Стан «Наступний крок» після кліку на замовлення (як у Figma) */
+.modal-order-success {
+  background-color: var(--color-elevated, #1B201B);
+  border: 1px solid var(--color-accent, #C6FF36);
+  border-radius: var(--radius-sm, 8px);
+  padding: 18px 20px;
+}
+
+.modal-order-success__title {
+  color: var(--color-accent, #C6FF36);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-order-success__text {
+  font-size: 13px;
+  color: var(--color-text-secondary, #A0A5A0);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Нижня панель дій */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.modal-btn-order {
+  flex: 1;
+  background-color: var(--color-accent, #C6FF36);
+  border: 1px solid var(--color-accent, #C6FF36);
+  color: var(--color-bg-primary, #080A08);
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  height: 48px;
+  border-radius: var(--radius-sm, 8px);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all var(--transition-fast, 150ms ease);
+}
+
+.modal-btn-order:hover {
+  background-color: var(--color-accent-hover, #D8FF72);
+  border-color: var(--color-accent-hover, #D8FF72);
+  transform: translateY(-1px);
+}
+
+.modal-btn-order:focus-visible {
+  outline: 2px solid var(--color-accent, #C6FF36);
+  outline-offset: 3px;
+}
+
+.modal-btn-close-action {
+  background-color: transparent;
+  border: 1px solid var(--color-border, #292E29);
+  color: var(--color-text-secondary, #A0A5A0);
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: var(--radius-sm, 8px);
+  cursor: pointer;
+  transition: all var(--transition-fast, 150ms ease);
+}
+
+.modal-btn-close-action:hover {
+  background-color: var(--color-elevated, #1B201B);
+  border-color: var(--color-border-hover, #707770);
+  color: var(--color-text-primary, #FFFFFF);
+}
+
+.modal-btn-close-action:focus-visible {
+  outline: 2px solid var(--color-accent, #C6FF36);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Адаптивність (Mobile Responsiveness — Шторка 92dvh без padding)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 32px 16px 60px;
+  }
+
+  .site-header {
+    margin-bottom: 32px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* На мобільному оверлей без паддінгу, щоб шторка прилягала до низу */
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  /* Шторка на всю ширину з ручкою угорі та 92dvh (для iOS Safari) */
+  .modal-window {
+    max-height: 92dvh;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    transform: translateY(100%);
+  }
+
+  .modal-overlay.is-active .modal-window {
+    transform: translateY(0);
+  }
+
+  .modal-drag-handle {
+    display: block;
+  }
+
+  .modal-media {
+    height: 200px;
+  }
+
+  .modal-details {
+    padding: 20px 20px 32px;
+    gap: 16px;
+  }
+
+  .modal-details__title {
+    font-size: 22px;
+  }
+
+  .modal-pricing-bar {
+    padding: 12px 14px;
+  }
+
+  .modal-price-value {
+    font-size: 22px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-btn-order {
+    order: 1;
+  }
+
+  .modal-btn-close-action {
+    order: 2;
+  }
+}

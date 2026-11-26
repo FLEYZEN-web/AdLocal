@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMART MERCH — Демонстрація Telegram-бота та перевірка форми</title>
+
+  <!-- Шрифт Inter з Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Стилі дизайн-системи та сторінки -->
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="bot-demo.css">
+</head>
+<body>
+
+  <div class="page-wrapper">
+    
+    <!-- Шапка сайту -->
+    <header class="site-header">
+      <a href="index.html" class="brand-logo">
+        SMART MERCH<span>.</span>
+      </a>
+      <span class="header-tag">Bot & Forms Integration</span>
+    </header>
+
+    <!-- Заголовок сторінки -->
+    <section class="hero-header">
+      <div class="hero-rubric">Інтеграція та автоматизація</div>
+      <h1 class="hero-title">Telegram-бот та форма швидкої заявки</h1>
+      <p class="hero-desc">
+        Оберіть зручний канал зв'язку: скористайтеся нашим автоматичним Telegram-ботом для миттєвого прорахунку 
+        тиражу або заповніть форму нижче з автоматичною валідацією номера та пошти.
+      </p>
+    </section>
+
+    <!-- Двоколонковий блок: Бот + Форма -->
+    <div class="bot-demo-layout">
+
+      <!-- ====================================================================
+           1. СЕКЦІЯ ДЕМОНСТРАЦІЇ TELEGRAM-БОТА
+           ==================================================================== -->
+      <section class="bot-showcase-card" aria-label="Демонстрація Telegram-бота">
+        
+        <!-- Шапка профілю бота -->
+        <div class="bot-showcase-header">
+          <div class="bot-profile">
+            <div class="bot-avatar">SM</div>
+            <div>
+              <h2 class="bot-meta-title">SMART MERCH Bot</h2>
+              <span class="bot-meta-status">онлайн • bot</span>
+            </div>
+          </div>
+          <span class="tg-badge">Telegram App</span>
+        </div>
+
+        <!-- Імітація діалогу в чаті -->
+        <div class="bot-chat-window" id="botChat">
+          
+          <!-- Повідомлення від користувача -->
+          <div class="chat-bubble chat-bubble--user">
+            /start
+            <span class="chat-bubble-time">14:20</span>
+          </div>
+
+          <!-- Повідомлення від бота -->
+          <div class="chat-bubble chat-bubble--bot">
+            Вітаємо у <strong>SMART MERCH</strong>! 👋<br><br>
+            Я допоможу розрахувати вартість корпоративного мерчу з інтегрованими NFC-чіпами або підібрати індивідуальний концепт під ваш бренд.
+            <span class="chat-bubble-time">14:20</span>
+          </div>
+
+          <!-- Інтерактивні кнопки меню бота -->
+          <div class="bot-reply-markup">
+            <button type="button" class="bot-inline-btn" data-chat-action="calc">⚡ Розрахувати тираж</button>
+            <button type="button" class="bot-inline-btn" data-chat-action="catalog">📂 Каталог NFC-мерчу</button>
+            <button type="button" class="bot-inline-btn" data-chat-action="sample">🎁 Замовити зразок</button>
+            <button type="button" class="bot-inline-btn" data-chat-action="manager">💬 Чат з менеджером</button>
+          </div>
+
+        </div>
+
+        <!-- Кнопка переходу у конкретний Telegram-бот бренду -->
+        <a href="https://t.me/SmartMerchOfficialBot" target="_blank" rel="noopener noreferrer" class="tg-channel-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+          </svg>
+          Відкрити @SmartMerchOfficialBot
+        </a>
+
+      </section>
+
+      <!-- ====================================================================
+           2. СЕКЦІЯ ФОРМИ ЗАЯВКИ З ПЕРЕВІРКОЮ ТА МАСКОЮ ТЕЛЕФОНУ
+           ==================================================================== -->
+      <section class="form-card" aria-label="Форма замовлення концепту">
+        
+        <div class="form-header">
+          <h2 class="form-card-title">Залишити заявку</h2>
+          <p class="form-card-subtitle">Заповніть поля, і наш арт-директор зв'яжеться з вами.</p>
+        </div>
+
+        <!-- Повідомлення про успішне відправлення (role=status для скрінрідерів) -->
+        <div id="formSuccessBanner" class="form-success-banner" role="status" aria-live="polite">
+          <div class="success-icon-badge">✓</div>
+          <h3 class="success-title">Заявку успішно відправлено!</h3>
+          <p class="success-text">
+            <strong>Демо-режим:</strong> Дані форми пройшли успішну валідацію. В робочому середовищі вони будуть надіслані на сервер або передані в Telegram-бот.
+          </p>
+          <button type="button" id="resetFormBtn" class="reset-form-btn">
+            Заповнити форму повторно
+          </button>
+        </div>
+
+        <!-- Сама форма -->
+        <form id="orderForm" novalidate>
+          
+          <!-- Ім'я -->
+          <div class="form-field">
+            <label for="userName" class="form-label">
+              Ваше ім'я або компанія <span class="form-required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="userName" 
+              name="name" 
+              class="form-input" 
+              placeholder="Наприклад: Олексій (TechCorp)"
+              autocomplete="name"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="nameError"
+            >
+            <span class="form-error-msg" id="nameError" role="alert">Будь ласка, вкажіть ваше ім'я</span>
+          </div>
+
+          <!-- Телефон з автоматичною маскою +380 -->
+          <div class="form-field">
+            <label for="userPhone" class="form-label">
+              Номер телефону <span class="form-required">*</span>
+            </label>
+            <input 
+              type="tel" 
+              id="userPhone" 
+              name="phone" 
+              class="form-input" 
+              placeholder="+380 (__) ___-__-__" 
+              autocomplete="tel"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="phoneError"
+            >
+            <span class="form-error-msg" id="phoneError" role="alert">Введіть повний номер телефону у форматі +380...</span>
+          </div>
+
+          <!-- Електронна пошта -->
+          <div class="form-field">
+            <label for="userEmail" class="form-label">
+              Електронна пошта <span class="form-required">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="userEmail" 
+              name="email" 
+              class="form-input" 
+              placeholder="name@company.com" 
+              autocomplete="email"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="emailError"
+            >
+            <span class="form-error-msg" id="emailError" role="alert">Введіть коректну адресу пошти (наприклад: name@mail.com)</span>
+          </div>
+
+          <!-- Кнопка відправки -->
+          <button type="submit" id="submitBtn" class="form-submit-btn">
+            Відправити заявку →
+          </button>
+
+        </form>
+
+      </section>
+
+    </div>
+
+  </div>
+
+  <!-- ==========================================================================
+       ЛОГІКА ВАЛІДАЦІЇ ТА АВТОМАТИЧНОЇ МАСКИ ТЕЛЕФОНУ
+       ========================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      const form = document.getElementById('orderForm');
+      const nameInput = document.getElementById('userName');
+      const phoneInput = document.getElementById('userPhone');
+      const emailInput = document.getElementById('userEmail');
+      const successBanner = document.getElementById('formSuccessBanner');
+      const resetBtn = document.getElementById('resetFormBtn');
+
+      // ------------------------------------------------------------------------
+      // 1. АВТОМАТИЧНА МАСКА НОМЕРА ТЕЛЕФОНУ (+380 (XX) XXX-XX-XX)
+      // ------------------------------------------------------------------------
+      function formatUkrainianPhone(rawValue) {
+        if (!rawValue) return '';
+
+        // Очищаємо все, крім цифр
+        let digits = rawValue.replace(/\D/g, '');
+        if (!digits) return '';
+
+        // Обробка початку номера:
+        // Якщо ввели/вставили з 0 (наприклад, 0501234567) -> робимо 380501234567
+        if (digits.startsWith('0')) {
+          digits = '38' + digits;
+        } else if (digits.startsWith('80')) {
+          digits = '3' + digits;
+        } else if (!digits.startsWith('380')) {
+          // Якщо починають вводити одразу з коду оператора (наприклад, 50...)
+          digits = '380' + digits;
+        }
+
+        // Обмежуємо 12 цифрами (код країни 380 + 9 цифр номера)
+        digits = digits.substring(0, 12);
+
+        // Форматуємо за маскою: +380 (XX) XXX-XX-XX
+        let res = '+380';
+        if (digits.length > 3) {
+          res += ' (' + digits.substring(3, 5);
+        }
+        if (digits.length >= 5) {
+          res += ') ' + digits.substring(5, 8);
+        }
+        if (digits.length >= 8) {
+          res += '-' + digits.substring(8, 10);
+        }
+        if (digits.length >= 10) {
+          res += '-' + digits.substring(10, 12);
+        }
+
+        return res;
+      }
+
+      phoneInput.addEventListener('input', function() {
+        if (!this.value.trim()) {
+          clearError(this);
+          return;
+        }
+        this.value = formatUkrainianPhone(this.value);
+        clearError(this);
+      });
+
+      // Спеціальний обробник вставки повного номера з буфера обміну
+      phoneInput.addEventListener('paste', function(e) {
+        e.preventDefault();
+        const pastedText = (e.clipboardData || window.clipboardData).getData('text');
+        this.value = formatUkrainianPhone(pastedText);
+        clearError(this);
+      });
+
+      // ------------------------------------------------------------------------
+      // 2. ВАЛІДАЦІЯ ПОЛІВ ТА A11Y (aria-invalid)
+      // ------------------------------------------------------------------------
+      function showError(inputElement) {
+        inputElement.classList.add('has-error');
+        inputElement.setAttribute('aria-invalid', 'true');
+      }
+
+      function clearError(inputElement) {
+        inputElement.classList.remove('has-error');
+        inputElement.setAttribute('aria-invalid', 'false');
+      }
+
+      function validateName() {
+        const val = nameInput.value.trim();
+        if (val.length < 2) {
+          showError(nameInput);
+          return false;
+        }
+        clearError(nameInput);
+        return true;
+      }
+
+      function validatePhone() {
+        const digits = phoneInput.value.replace(/\D/g, '');
+        // Український номер має містити рівно 12 цифр (380XXXXXXXXX)
+        if (digits.length !== 12) {
+          showError(phoneInput);
+          return false;
+        }
+        clearError(phoneInput);
+        return true;
+      }
+
+      function validateEmail() {
+        const val = emailInput.value.trim();
+        // Перевірка формату email: щось @ щось . щось
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        if (!emailRegex.test(val)) {
+          showError(emailInput);
+          return false;
+        }
+        clearError(emailInput);
+        return true;
+      }
+
+      // Очищення помилок під час введення
+      nameInput.addEventListener('input', () => clearError(nameInput));
+      emailInput.addEventListener('input', () => clearError(emailInput));
+
+      // ------------------------------------------------------------------------
+      // 3. ВІДПРАВКА ФОРМИ ТА ВИВІД ПОВІДОМЛЕННЯ
+      // ------------------------------------------------------------------------
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const isNameValid = validateName();
+        const isPhoneValid = validatePhone();
+        const isEmailValid = validateEmail();
+
+        // Якщо хоча б одне поле невалідне — блокуємо відправку
+        if (!isNameValid || !isPhoneValid || !isEmailValid) {
+          return;
+        }
+
+        // Успішна валідація: ховаємо форму та показуємо повідомлення
+        form.style.display = 'none';
+        successBanner.classList.add('is-shown');
+      });
+
+      // Кнопка «Надіслати ще одну заявку»
+      resetBtn.addEventListener('click', function() {
+        form.reset();
+        clearError(nameInput);
+        clearError(phoneInput);
+        clearError(emailInput);
+        successBanner.classList.remove('is-shown');
+        form.style.display = '';
+        nameInput.focus();
+      });
+
+      // ------------------------------------------------------------------------
+      // 4. ДЕМОНСТРАЦІЯ КНОПОК TELEGRAM-БОТА
+      // ------------------------------------------------------------------------
+      const chatWindow = document.getElementById('botChat');
+      const inlineBtns = document.querySelectorAll('[data-chat-action]');
+
+      inlineBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const actionText = this.textContent;
+          
+          // Додаємо повідомлення користувача в чат
+          const userBubble = document.createElement('div');
+          userBubble.className = 'chat-bubble chat-bubble--user';
+          userBubble.innerHTML = `${actionText} <span class="chat-bubble-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>`;
+          chatWindow.appendChild(userBubble);
+
+          // Відповідь бота через 400мс
+          setTimeout(() => {
+            const botBubble = document.createElement('div');
+            botBubble.className = 'chat-bubble chat-bubble--bot';
+            
+            let reply = 'Запит прийнято! Наш менеджер вже готує прорахунок.';
+            if (this.dataset.chatAction === 'catalog') {
+              reply = 'Ось наш повний каталог зразків: сталеві брелоки, гребінці з QR та ароматизатори.';
+            } else if (this.dataset.chatAction === 'sample') {
+              reply = 'Для отримання безкоштовного тестового зразка заповніть форму поруч 👉';
+            }
+
+            botBubble.innerHTML = `${reply} <span class="chat-bubble-time">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>`;
+            chatWindow.appendChild(botBubble);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+          }, 400);
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>

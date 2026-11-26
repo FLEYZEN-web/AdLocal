@@ -1,0 +1,729 @@
+/**
+ * SMART MERCH — Form Components & UI States
+ * File: src/styles/components/forms.css
+ * 
+ * Включає базові стилі та стани для:
+ * - Полів вводу (input)
+ * - Текстових блоків (textarea)
+ * - Селектів (select)
+ * - Кнопок (button, .btn)
+ * - UI-станів: :hover, :focus (салатова рамка), .error (червона рамка #FF5B5B), :disabled, :active, .is-loading
+ */
+
+@import "../tokens.css";
+
+/* ==========================================================================
+   Базові налаштування форми (Form Layout Helpers)
+   ========================================================================== */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-8, 8px);
+  width: 100%;
+  margin-bottom: var(--spacing-16, 16px);
+  box-sizing: border-box;
+}
+
+.form-label {
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: var(--font-size-base, 14px);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 21px;
+  color: var(--color-text-primary, #FFFFFF);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.form-label-required {
+  color: var(--color-accent, #C6FF36);
+}
+
+.form-hint {
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: var(--font-size-xs, 12px);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 16px;
+  color: var(--color-text-muted, #707770);
+  margin-top: 2px;
+}
+
+.form-error {
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: var(--font-size-xs, 12px);
+  font-weight: var(--font-weight-medium, 500);
+  line-height: 16px;
+  color: var(--color-error, #FF5B5B);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   Базові стилі для Input (Поля вводу)
+   ========================================================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+.input,
+.form-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+
+  /* Прив'язка до токенів */
+  background-color: var(--color-card, #151915);
+  border: 1px solid var(--color-border, #292E29);
+  border-radius: var(--radius-sm, 8px);
+  color: var(--color-text-primary, #FFFFFF);
+
+  /* Типографіка */
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: var(--font-size-base, 14px);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 20px;
+
+  outline: none;
+  transition: border-color var(--transition-normal, 200ms ease),
+              background-color var(--transition-normal, 200ms ease),
+              box-shadow var(--transition-normal, 200ms ease),
+              color var(--transition-normal, 200ms ease);
+}
+
+/* Плейсхолдер */
+input::placeholder,
+.input::placeholder,
+.form-input::placeholder {
+  color: var(--color-text-muted, #707770);
+  font-weight: var(--font-weight-regular, 400);
+}
+
+/* ==========================================================================
+   Базові стилі для Textarea (Текстові блоки)
+   ========================================================================== */
+
+textarea,
+.textarea,
+.form-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 120px;
+  padding: 14px 16px;
+
+  /* Прив'язка до токенів */
+  background-color: var(--color-card, #151915);
+  border: 1px solid var(--color-border, #292E29);
+  border-radius: var(--radius-sm, 8px);
+  color: var(--color-text-primary, #FFFFFF);
+
+  /* Типографіка */
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: var(--font-size-base, 14px);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 20px;
+  resize: vertical;
+
+  outline: none;
+  transition: border-color var(--transition-normal, 200ms ease),
+              background-color var(--transition-normal, 200ms ease),
+              box-shadow var(--transition-normal, 200ms ease),
+              color var(--transition-normal, 200ms ease);
+}
+
+textarea::placeholder,
+.textarea::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-text-muted, #707770);
+  font-weight: var(--font-weight-regular, 400);
+}
+
+/* ==========================================================================
+   Базові стилі для Select (Селекти)
+   ========================================================================== */
+
+select,
+.select,
+.form-select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 56px;
+  padding: 0 44px 0 16px;
+
+  /* Прив'язка до токенів */
+  background-color: var(--color-card, #151915);
+  border: 1px solid var(--color-border, #292E29);
+  border-radius: var(--radius-sm, 8px);
+  color: var(--color-text-primary, #FFFFFF);
+
+  /* Типографіка */
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: var(--font-size-base, 14px);
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 20px;
+
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* Кастомна стрілка SVG */
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23A0A5A0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px 16px;
+
+  transition: border-color var(--transition-normal, 200ms ease),
+              background-color var(--transition-normal, 200ms ease),
+              box-shadow var(--transition-normal, 200ms ease),
+              background-image var(--transition-normal, 200ms ease);
+}
+
+/* Опції всередині select */
+select option {
+  background-color: var(--color-card, #151915);
+  color: var(--color-text-primary, #FFFFFF);
+  padding: 8px 12px;
+}
+
+/* ==========================================================================
+   UI-стани для полів вводу (Input, Textarea, Select)
+   ========================================================================== */
+
+/* 1. Стан Hover */
+input[type="text"]:hover:not(:disabled),
+input[type="email"]:hover:not(:disabled),
+input[type="password"]:hover:not(:disabled),
+input[type="number"]:hover:not(:disabled),
+input[type="tel"]:hover:not(:disabled),
+input[type="url"]:hover:not(:disabled),
+input[type="search"]:hover:not(:disabled),
+input[type="date"]:hover:not(:disabled),
+input[type="time"]:hover:not(:disabled),
+.input:hover:not(:disabled):not(.disabled),
+.form-input:hover:not(:disabled):not(.disabled),
+textarea:hover:not(:disabled),
+.textarea:hover:not(:disabled):not(.disabled),
+.form-textarea:hover:not(:disabled):not(.disabled),
+select:hover:not(:disabled),
+.select:hover:not(:disabled):not(.disabled),
+.form-select:hover:not(:disabled):not(.disabled) {
+  border-color: var(--color-border-hover, #707770);
+  background-color: var(--color-card, #151915);
+}
+
+/* 2. Стан Focus (Салатова рамка #C6FF36) */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input.focus,
+textarea.focus,
+select.focus,
+.input:focus,
+.form-input:focus,
+.input.focus,
+.form-input.focus,
+textarea:focus,
+.textarea:focus,
+.form-textarea:focus,
+.textarea.focus,
+.form-textarea.focus,
+select:focus,
+.select:focus,
+.form-select:focus,
+.select.focus,
+.form-select.focus {
+  border-color: var(--color-accent, #C6FF36);
+  background-color: var(--color-card, #151915);
+  box-shadow: 0 0 0 1px var(--color-accent, #C6FF36),
+              0 0 0 4px var(--color-accent-glow, rgba(198, 255, 54, 0.16));
+  outline: none;
+}
+
+/* Селект при фокусі змінює іконку на салатову */
+select:focus,
+.select:focus,
+.form-select:focus {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23C6FF36' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* 3. Стан Error (Червона рамка #FF5B5B) */
+input.error,
+input.is-invalid,
+input[aria-invalid="true"],
+.input.error,
+.form-input.error,
+textarea.error,
+textarea.is-invalid,
+textarea[aria-invalid="true"],
+.textarea.error,
+.form-textarea.error,
+select.error,
+select.is-invalid,
+select[aria-invalid="true"],
+.select.error,
+.form-select.error {
+  border-color: var(--color-error, #FF5B5B);
+  background-color: var(--color-card, #151915);
+}
+
+/* Error + Focus: червона підсвітка та салатовий фокус не конфліктують, рамка лишається червоною */
+input.error:focus,
+input.is-invalid:focus,
+input[aria-invalid="true"]:focus,
+.input.error:focus,
+.form-input.error:focus,
+textarea.error:focus,
+textarea.is-invalid:focus,
+textarea[aria-invalid="true"]:focus,
+.textarea.error:focus,
+.form-textarea.error:focus,
+select.error:focus,
+select.is-invalid:focus,
+select[aria-invalid="true"]:focus,
+.select.error:focus,
+.form-select.error:focus {
+  border-color: var(--color-error, #FF5B5B);
+  box-shadow: 0 0 0 1px var(--color-error, #FF5B5B),
+              0 0 0 4px var(--color-error-glow, rgba(255, 91, 91, 0.16));
+}
+
+select.error,
+select.is-invalid,
+select[aria-invalid="true"] {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23FF5B5B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Focus та Error мають перемагати Hover (інакше при наведенні рамка стає сірою) */
+:is(input, textarea, select, .input, .form-input, .textarea, .form-textarea, .select, .form-select):focus:hover:not(:disabled),
+:is(input, textarea, select, .input, .form-input, .textarea, .form-textarea, .select, .form-select).focus:hover:not(:disabled) {
+  border-color: var(--color-accent, #C6FF36);
+  background-color: var(--color-card, #151915);
+}
+
+:is(input, textarea, select, .input, .form-input, .textarea, .form-textarea, .select, .form-select):is(.error, .is-invalid, [aria-invalid="true"]):hover:not(:disabled) {
+  border-color: var(--color-error, #FF5B5B);
+  background-color: var(--color-card, #151915);
+}
+
+/* 4. Стан Disabled (Вимкнений) */
+input:disabled,
+input[disabled],
+.input:disabled,
+.input.disabled,
+.form-input:disabled,
+.form-input.disabled,
+textarea:disabled,
+textarea[disabled],
+.textarea:disabled,
+.textarea.disabled,
+.form-textarea:disabled,
+.form-textarea.disabled,
+select:disabled,
+select[disabled],
+.select:disabled,
+.select.disabled,
+.form-select:disabled,
+.form-select.disabled {
+  background-color: var(--color-bg-secondary, #101310);
+  border-color: var(--color-border, #292E29);
+  color: var(--color-text-muted, #707770);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+select:disabled,
+.select:disabled,
+.form-select:disabled {
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23707770' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   Базові стилі для Кнопок (Buttons)
+   ========================================================================== */
+
+/* Загальні базові властивості для всіх кнопок */
+button,
+.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-12, 12px);
+  padding: 0 24px;
+  min-height: 56px;
+
+  /* Типографіка */
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-style: normal;
+  font-weight: var(--font-weight-semibold, 600);
+  font-size: var(--font-size-base, 14px);
+  line-height: 17px;
+  text-decoration: none;
+  white-space: nowrap;
+
+  border-radius: var(--radius-sm, 8px);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+
+  transition: background-color var(--transition-normal, 200ms ease),
+              border-color var(--transition-normal, 200ms ease),
+              color var(--transition-normal, 200ms ease),
+              box-shadow var(--transition-normal, 200ms ease),
+              transform var(--transition-fast, 150ms ease);
+}
+
+/* --------------------------------------------------------------------------
+   1. Primary Button (Головна кнопка: Салатовий фон #C6FF36)
+   -------------------------------------------------------------------------- */
+:where(button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger), .btn),
+.btn-primary {
+  background-color: var(--color-accent, #C6FF36);
+  border: 1px solid var(--color-accent, #C6FF36);
+  color: var(--color-bg-primary, #080A08);
+}
+
+/* Primary — Hover */
+button:not([class]):hover:not(:disabled),
+.btn-primary:hover:not(:disabled):not(.disabled),
+.btn:hover:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):not(:disabled):not(.disabled),
+.btn-primary.hover {
+  background-color: var(--color-accent-hover, #D8FF72);
+  border-color: var(--color-accent-hover, #D8FF72);
+  color: var(--color-bg-primary, #080A08);
+}
+
+/* Primary — Pressed / Active */
+button:not([class]):active:not(:disabled),
+.btn-primary:active:not(:disabled):not(.disabled),
+.btn:active:not(.btn-secondary):not(.btn-ghost):not(.btn-danger):not(:disabled):not(.disabled),
+.btn-primary.pressed,
+.btn-primary.active {
+  background-color: var(--color-elevated, #1B201B);
+  border: 2px solid var(--color-accent-hover, #D8FF72);
+  color: var(--color-accent, #C6FF36);
+}
+
+/* Primary — Focus (Салатова рамка фокусу з контуром) */
+button:not([class]):focus-visible,
+.btn-primary:focus-visible,
+.btn:focus-visible:not(.btn-secondary):not(.btn-ghost):not(.btn-danger),
+.btn-primary.focus {
+  outline: 2px solid var(--color-accent, #C6FF36);
+  outline-offset: 2px;
+}
+
+/* Primary — Disabled */
+button:not([class]):disabled,
+button:not(.btn-secondary):not(.btn-ghost):not(.btn-danger)[disabled],
+.btn-primary:disabled,
+.btn-primary[disabled],
+.btn-primary.disabled,
+.btn:disabled:not(.btn-secondary):not(.btn-ghost):not(.btn-danger),
+.btn.disabled:not(.btn-secondary):not(.btn-ghost):not(.btn-danger) {
+  background-color: var(--color-border, #292E29);
+  border-color: var(--color-border, #292E29);
+  color: var(--color-text-muted, #707770);
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. Secondary Button (Вторинна кнопка: Темний фон #080A08, бордер #292E29)
+   -------------------------------------------------------------------------- */
+.btn-secondary {
+  background-color: var(--color-bg-primary, #080A08);
+  border: 1px solid var(--color-border, #292E29);
+  color: var(--color-text-primary, #FFFFFF);
+}
+
+/* Secondary — Hover */
+.btn-secondary:hover:not(:disabled):not(.disabled),
+.btn-secondary.hover {
+  background-color: var(--color-elevated, #1B201B);
+  border-color: var(--color-accent, #C6FF36);
+  color: var(--color-text-primary, #FFFFFF);
+}
+
+/* Secondary — Pressed / Active */
+.btn-secondary:active:not(:disabled):not(.disabled),
+.btn-secondary.pressed,
+.btn-secondary.active {
+  background-color: var(--color-elevated, #1B201B);
+  border: 2px solid var(--color-accent-hover, #D8FF72);
+  color: var(--color-text-primary, #FFFFFF);
+}
+
+/* Secondary — Focus */
+.btn-secondary:focus-visible,
+.btn-secondary.focus {
+  outline: 2px solid var(--color-accent, #C6FF36);
+  outline-offset: 2px;
+}
+
+/* Secondary — Disabled */
+.btn-secondary:disabled,
+.btn-secondary[disabled],
+.btn-secondary.disabled {
+  background-color: var(--color-border, #292E29);
+  border-color: var(--color-border, #292E29);
+  color: var(--color-text-muted, #707770);
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Ghost Button (Прозора кнопка без фону)
+   -------------------------------------------------------------------------- */
+.btn-ghost {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--color-accent, #C6FF36);
+}
+
+.btn-ghost:hover:not(:disabled):not(.disabled) {
+  background-color: var(--color-elevated, #1B201B);
+  border-color: var(--color-elevated, #1B201B);
+  color: var(--color-accent, #C6FF36);
+}
+
+.btn-ghost:focus-visible {
+  outline: 2px solid var(--color-accent, #C6FF36);
+  outline-offset: 2px;
+}
+
+.btn-ghost:disabled,
+.btn-ghost.disabled {
+  color: var(--color-text-muted, #707770);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. Danger / Error Button (Кнопка помилки/видалення)
+   -------------------------------------------------------------------------- */
+.btn-danger {
+  background-color: transparent;
+  border: 1px solid var(--color-error, #FF5B5B);
+  color: var(--color-error, #FF5B5B);
+}
+
+.btn-danger:hover:not(:disabled):not(.disabled) {
+  background-color: var(--color-error, #FF5B5B);
+  color: var(--color-bg-primary, #080A08);
+}
+
+.btn-danger:focus-visible {
+  outline: 2px solid var(--color-error, #FF5B5B);
+  outline-offset: 2px;
+}
+
+.btn-danger:disabled,
+.btn-danger.disabled {
+  background-color: var(--color-border, #292E29);
+  border-color: var(--color-border, #292E29);
+  color: var(--color-text-muted, #707770);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   5. Button Sizes (Розміри кнопок)
+   -------------------------------------------------------------------------- */
+
+/* Small (h: 40px) */
+.btn-sm {
+  min-height: 40px;
+  height: 40px;
+  padding: 0 16px;
+  font-size: var(--font-size-xs, 12px);
+  gap: var(--spacing-8, 8px);
+  border-radius: var(--radius-xs, 4px);
+}
+
+/* Medium (h: 48px) */
+.btn-md {
+  min-height: 48px;
+  height: 48px;
+  padding: 0 20px;
+  font-size: var(--font-size-base, 14px);
+  gap: 10px;
+  border-radius: var(--radius-sm, 8px);
+}
+
+/* Large / Default (h: 56px) */
+.btn-lg {
+  min-height: 56px;
+  height: 56px;
+  padding: 0 24px;
+  font-size: var(--font-size-base, 14px);
+  gap: var(--spacing-12, 12px);
+  border-radius: var(--radius-sm, 8px);
+}
+
+/* Full Width */
+.btn-block {
+  width: 100%;
+  display: flex;
+}
+
+/* --------------------------------------------------------------------------
+   6. Button Loading State (Стан завантаження зі спінером)
+   -------------------------------------------------------------------------- */
+.btn.is-loading,
+.btn.loading,
+button.is-loading,
+button.loading,
+[aria-busy="true"].btn {
+  position: relative;
+  pointer-events: none;
+  cursor: wait;
+}
+
+.btn.is-loading::before,
+.btn.loading::before,
+button.is-loading::before,
+button.loading::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: btn-spin 0.8s linear infinite;
+  box-sizing: border-box;
+  margin-right: 8px;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Додаткові елементи форми: Checkbox & Radio (24px, як у Figma)
+   ========================================================================== */
+
+.form-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-family, 'Inter', sans-serif);
+  font-size: var(--font-size-base, 14px);
+  color: var(--color-text-primary, #FFFFFF);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  background-color: var(--color-card, #151915);
+  border: 1px solid var(--color-text-muted, #707770);
+  border-radius: var(--radius-xs, 4px);
+  outline: none;
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  margin: 0;
+  transition: all var(--transition-fast, 150ms ease);
+}
+
+input[type="radio"] {
+  border-radius: var(--radius-full, 50%);
+  border-width: 2px;
+}
+
+/* Hover (не для checked, щоб не ховати галочку) */
+input[type="checkbox"]:hover:not(:disabled):not(:checked),
+input[type="radio"]:hover:not(:disabled):not(:checked) {
+  border-color: var(--color-accent, #C6FF36);
+  background-color: var(--color-elevated, #1B201B);
+}
+
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+  outline: 2px solid var(--color-accent, #C6FF36);
+  outline-offset: 2px;
+}
+
+/* Checkbox checked */
+input[type="checkbox"]:checked {
+  background-color: var(--color-accent, #C6FF36);
+  border-color: var(--color-accent, #C6FF36);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  width: 12px;
+  height: 7px;
+  border-left: 2px solid var(--color-bg-primary, #080A08);
+  border-bottom: 2px solid var(--color-bg-primary, #080A08);
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+/* Radio checked */
+input[type="radio"]:checked {
+  border-color: var(--color-accent, #C6FF36);
+  background-color: var(--color-card, #151915);
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-accent, #C6FF36);
+}
+
+/* Disabled */
+input[type="checkbox"]:disabled,
+input[type="radio"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  border-color: var(--color-border, #292E29);
+  background-color: var(--color-bg-secondary, #101310);
+}
+
+/* Disabled + checked: галочка/крапка лишаються видимими */
+input[type="checkbox"]:disabled:checked {
+  background-color: var(--color-accent, #C6FF36);
+  border-color: var(--color-accent, #C6FF36);
+}
+
+input[type="radio"]:disabled:checked {
+  border-color: var(--color-accent, #C6FF36);
+}
