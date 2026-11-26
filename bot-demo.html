@@ -207,39 +207,31 @@
       function formatUkrainianPhone(rawValue) {
         if (!rawValue) return '';
 
-        // Очищаємо все, крім цифр
         let digits = rawValue.replace(/\D/g, '');
         if (!digits) return '';
 
-        // Обробка початку номера:
-        // Якщо ввели/вставили з 0 (наприклад, 0501234567) -> робимо 380501234567
-        if (digits.startsWith('0')) {
-          digits = '38' + digits;
+        // Користувач ще вводить код країни (3, 38, 380) — не вважаємо це номером оператора
+        if (digits.length <= 3 && '380'.startsWith(digits)) {
+          return '+' + digits;
+        }
+
+        // Виділяємо національну частину (9 цифр) без коду країни
+        let national = digits;
+        if (digits.startsWith('380')) {
+          national = digits.substring(3);
         } else if (digits.startsWith('80')) {
-          digits = '3' + digits;
-        } else if (!digits.startsWith('380')) {
-          // Якщо починають вводити одразу з коду оператора (наприклад, 50...)
-          digits = '380' + digits;
+          national = digits.substring(2);
+        } else if (digits.startsWith('0')) {
+          national = digits.substring(1);
         }
+        national = national.substring(0, 9);
 
-        // Обмежуємо 12 цифрами (код країни 380 + 9 цифр номера)
-        digits = digits.substring(0, 12);
-
-        // Форматуємо за маскою: +380 (XX) XXX-XX-XX
+        // Маска: +380 (XX) XXX-XX-XX
         let res = '+380';
-        if (digits.length > 3) {
-          res += ' (' + digits.substring(3, 5);
-        }
-        if (digits.length >= 5) {
-          res += ') ' + digits.substring(5, 8);
-        }
-        if (digits.length >= 8) {
-          res += '-' + digits.substring(8, 10);
-        }
-        if (digits.length >= 10) {
-          res += '-' + digits.substring(10, 12);
-        }
-
+        if (national.length > 0) res += ' (' + national.substring(0, 2);
+        if (national.length > 2) res += ') ' + national.substring(2, 5);
+        if (national.length > 5) res += '-' + national.substring(5, 7);
+        if (national.length > 7) res += '-' + national.substring(7, 9);
         return res;
       }
 
